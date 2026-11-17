@@ -28,10 +28,10 @@ from datetime import datetime
 from binstring import bintofield, datatobin, prefixzeros
 
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_FORMAT_DIR = APP_DIR  # folder holding the bf-*.csv files
-DEFAULT_PARAMETERS_FILE = os.path.join(APP_DIR, "parameters.csv")  # wave header
-DEFAULT_ENG_HEADER_FILE = os.path.join(APP_DIR, "eng_header.csv")
-DEFAULT_WEATHER_HEADER_FILE = os.path.join(APP_DIR, "weather_header.csv")
+DEFAULT_FORMAT_DIR = os.path.join(APP_DIR, "format_definitions")
+DEFAULT_PARAMETERS_FILE = os.path.join(APP_DIR, "headers", "wave_header.csv")
+DEFAULT_ENG_HEADER_FILE = os.path.join(APP_DIR, "headers", "eng_header.csv")
+DEFAULT_WEATHER_HEADER_FILE = os.path.join(APP_DIR, "headers", "weather_header.csv")
 
 OUTPUT_NAMES = {
     "eng": "eng_data.csv",
@@ -61,7 +61,7 @@ def _make_logger(log_callback):
 
 
 # --------------------------------------------------------------------------- #
-# Header files (one column name per line, same layout as parameters.csv)
+# Header files (one column name per line)
 # --------------------------------------------------------------------------- #
 def read_header_file(path):
     """Return the non-empty lines of a header file as a list of column names."""
@@ -77,7 +77,7 @@ def read_header_file(path):
 
 
 def read_wave_header(parameters_file=DEFAULT_PARAMETERS_FILE):
-    """Wave header columns (parameters.csv)."""
+    """Wave header columns (headers/wave_header.csv)."""
     return read_header_file(parameters_file)
 
 

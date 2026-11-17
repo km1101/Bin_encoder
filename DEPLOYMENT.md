@@ -7,9 +7,9 @@
    (step 4). Users then type or browse paths such as `/mnt/data/TH2`.
 2. **Output behaviour.** If an output folder is given, `eng_data.csv`, `weather_data.csv` and
    `wave_data.csv` are written there (shared). If it is blank, each source folder gets its own CSVs.
-3. **Files to deploy together** (same folder): `app.py`, `main.py`, `binstring.py`,
-   `requirements.txt`, `parameters.csv`, `eng_header.csv`, `weather_header.csv`, `table.csv`
-   and every `bf-*.csv` file.
+3. **Files to deploy together**: `app.py`, `main.py`, `binstring.py`,
+   `requirements.txt`, all CSV files in `headers/`, and all `bf-*.csv` files in
+   `format_definitions/`.
 
 ## 1. Prerequisites
 

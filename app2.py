@@ -220,8 +220,8 @@ with st.sidebar:
             browse_dialog("output")
 
     with st.expander("Advanced"):
-        format_dir = st.text_input("Format files folder (bf-*.csv)", value=sbd.DEFAULT_FORMAT_DIR)
-        parameters_file = st.text_input("Wave header (parameters.csv)", value=sbd.DEFAULT_PARAMETERS_FILE)
+        format_dir = st.text_input("Format files folder", value=sbd.DEFAULT_FORMAT_DIR)
+        parameters_file = st.text_input("Wave header (wave_header.csv)", value=sbd.DEFAULT_PARAMETERS_FILE)
         eng_header_file = st.text_input("ENG header CSV", value=sbd.DEFAULT_ENG_HEADER_FILE)
         weather_header_file = st.text_input("Weather header CSV", value=sbd.DEFAULT_WEATHER_HEADER_FILE)
         workers = st.slider("Parallel workers", 1, 16, min(8, os.cpu_count() or 2))
