@@ -10,7 +10,10 @@ Environment variables
                 Point it at your Azure Files mount, e.g. /mnt/data.
 """
 import csv
+import html
 import os
+import subprocess
+import sys
 from collections import deque
 
 import pandas as pd
@@ -51,6 +54,17 @@ def parse_folders(text):
     return out
 
 
+def log_html(lines, visible_lines=10):
+    """Render recent log lines in a fixed-height, scrollable HTML container."""
+    body = html.escape("\n".join(lines[-400:]))
+    return (
+        f'<div style="height:{visible_lines * 1.5 + 1.2}em;overflow-y:auto;display:flex;'
+        'flex-direction:column-reverse;background:rgba(128,128,128,0.12);border-radius:0.5rem;'
+        'padding:0.5rem 0.75rem;font-family:monospace;font-size:0.8rem;line-height:1.5em;">'
+        f'<div style="white-space:pre-wrap;word-break:break-all;">{body}</div></div>'
+    )
+
+
 def tail_csv(path, n=20):
     with open(path, "r", newline="") as f:
         reader = csv.reader(f)
@@ -58,6 +72,16 @@ def tail_csv(path, n=20):
         rows = deque(reader, maxlen=n)
     width = max([len(header)] + [len(r) for r in rows]) if rows else len(header)
     header = header + [f"col_{i}" for i in range(len(header), width)]
+    seen = {}
+    unique_header = []
+    for name in header:
+        if name in seen:
+            seen[name] += 1
+            unique_header.append(f"{name}.{seen[name]}")
+        else:
+            seen[name] = 0
+            unique_header.append(name)
+    header = unique_header
     data = [r + [""] * (width - len(r)) for r in rows]
     return pd.DataFrame(data, columns=header)
 
@@ -156,7 +180,6 @@ with st.sidebar:
 
     run_clicked = st.button("▶ Run Processing", type="primary", use_container_width=True)
 
-
 # --------------------------------------------------------------------------- #
 # Main page
 # --------------------------------------------------------------------------- #
@@ -193,7 +216,7 @@ if run_clicked:
 
         def on_log(line):
             log_lines.append(line)
-            box.code("\n".join(log_lines[-400:]), language=None)
+            box.markdown(log_html(log_lines), unsafe_allow_html=True)
 
         with st.spinner("Processing..."):
             try:
@@ -217,7 +240,7 @@ if last:
     s = last["summary"]
     if not run_clicked:
         with st.expander("📜 Processing log (last run)", expanded=False):
-            st.code("\n".join(last["log"][-400:]), language=None)
+            st.markdown(log_html(last["log"]), unsafe_allow_html=True)
 
     st.subheader("Results")
     m = st.columns(6)
