@@ -1,0 +1,10 @@
+Format ID,AWS ID,Year,Month,Day,Hour,Minute,GNSS high i,latitude,longitude,AT/RH/P i,pressure_20_seconds,temperature_air_20_seconds,humidity_relative_20_seconds,Wind i,wind_direction_10_minute,wind_speed_10_minute,wind__gust_direction_10_minute,wind_gust_speed_10_minute,SST i,temperature_sea_surface_20_seconds,Vis i,horizontal_visibility_2_minute,Heave i,significant_wave_height,average_wave_period,Salinity_i,Surface_Salinity_PSU,Eng_Basic_i,Battery_voltage_Avg,Current_avg,AWS_internal_temperature,GPS_age,No_of_sats,Vessel_course_over_ground,Vessel_speed_over_ground,Eng_Solar_Power_i,Current_used_mAh,Current_generated_mAh,Solar Array Voltage,Eng_Pitch_Roll_i,Max_Pitch,Max_Roll,Pitch_Average,Roll_Average
+1,1,1,1,1,1,1,1,10000,10000,1,1000,1000,10,1,1,10,1,10,1,1000,1,0.1,1,10,10,1,1000,1,10,1,10,1,1,1,10,1,10,10,10,1,10,10,10,10
+0,0,2000,0,0,0,0,0,-900000,-1800000,0,850000,-80000,0,0,0,0,0,0,0,-5000,0,0,0,0,0,0,0,0,0,0,-800,0,0,0,0,0,0,0,0,0,0,0,-1800,-1800
+0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,0,1,0,1,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0
+8,17,7,4,6,5,6,1,21,22,1,19,18,10,1,9,10,9,10,1,16,1,13,1,8,9,1,16,1,9,10,11,11,5,9,9,1,5,8,9,1,11,11,12,12
+254,131070,126,12,31,23,59,1,1800000,3600000,1,300000,262142,1000,1,360,1022,360,1022,1,65534,1,8190,1,254,510,1,65534,1,510,1022,2046,2046,30,360,510,1,30,254,510,1,1800,1800,3600,3600
+255,131071,127,15,63,31,63,0,2097151,4194303,0,524287,262143,1023,0,511,1023,511,1023,0,65535,0,8191,0,255,511,0,65535,0,511,1023,2047,2047,31,511,511,0,31,255,511,0,2047,2047,4095,4095
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Version 4.0 Dated 26/04/24,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
